@@ -1,0 +1,12 @@
+services:
+  database:
+    image: postgres:15
+    container_name: videolibrary-database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: videolibrary
+    volumes:
+      - ./src/main/resources/sql/init_schema.sql:/docker-entrypoint-initdb.d/init_schema.sql
+    ports:
+      - "5432:5432"
